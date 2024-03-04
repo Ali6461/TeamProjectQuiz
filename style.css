@@ -161,4 +161,16 @@ body {
     background-color: #000000;
     box-shadow: none;
 }
+.body1 {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main1 {
+    text-align: center;
+}
 
