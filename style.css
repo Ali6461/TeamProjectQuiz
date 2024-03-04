@@ -141,3 +141,24 @@ body {
     background-color: #000000;
     box-shadow: none;
 }
+
+.home-content .ai-btn{
+    width: 190px;
+    height: 55px;
+    background: #dc3cd4;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #dc3cd4;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.home-content .ai-btn:hover{
+    background-color: #000000;
+    box-shadow: none;
+}
+
