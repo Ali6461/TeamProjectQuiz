@@ -5,19 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Maker</title>
     <link rel="stylesheet" href="style.css">
-    <script src="questions.js" defer></script>
 </head>
-<body class="body1">
-    <main class="main1">
-        <header class="header">
-            <a href="#" class="logo">Quiz Creator</a>
-        </header>
+<body>
 
-        <h1>Question Input</h1>
-        <label for="questionInput">Enter your question:</label>
-        <input type="text" id="questionInput">
-        <button onclick="saveQuestion()">Save Question</button>
-    </main>
+<div class="main-container">
+    <h1>Question Input</h1>
+    <label for="questionInput">Enter your question:</label>
+    <input type="text" id="questionInput">
+    
+    <label for="correctAnswerInput">Enter the correct answer:</label>
+    <input type="text" id="correctAnswerInput">
+
+    <label for="incorrectAnswer1Input">Enter an incorrect answer:</label>
+    <input type="text" id="incorrectAnswer1Input">
+
+    <label for="incorrectAnswer2Input">Enter another incorrect answer:</label>
+    <input type="text" id="incorrectAnswer2Input">
+
+    <label for="incorrectAnswer3Input">Enter one more incorrect answer:</label>
+    <input type="text" id="incorrectAnswer3Input">
+
+    <button onclick="askQuestionsAndSave()">Save Question</button>
+</div>
+
+<script src="script.js" defer></script>
+
 </body>
 </html>
 
