@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+        }
+        #quiz-form {
+            max-width: 600px;
+            margin-right: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .option {
+            margin-left: 20px;
+        }
+        .remove-question-btn {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #submitted-questions {
+            flex-grow: 1;
+        }
+        .submitted-question {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Your Quiz</h1>
+    <form id="quiz-form">
+        <div id="questions-container">
+            <!-- Questions will be added dynamically here -->
+        </div>
+        <button type="button" id="add-question-btn">Add Question</button>
+        <button type="submit" id="submit-quiz-btn">Submit Quiz</button>
+    </form>
+
+    <div id="submitted-questions">
+        <!-- Submitted questions will be displayed here -->
+    </div>
+
+    <script>
+        // Function to add a new question field
+        function addQuestion() {
+            const questionsContainer = document.getElementById('questions-container');
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+
+            const questionLabel = document.createElement('label');
+            questionLabel.textContent = 'Question: ';
+            const questionInput = document.createElement('input');
+            questionInput.type = 'text';
+            questionInput.name = 'question';
+            questionLabel.appendChild(questionInput);
+
+            const option1Label = document.createElement('label');
+            option1Label.textContent = 'Correct Answer: ';
+            const option1Input = document.createElement('input');
+            option1Input.type = 'text';
+            option1Input.name = 'correct-answer';
+            option1Label.appendChild(option1Input);
+
+            const optionLabels = ['wrong answer 1: ', 'wrong answer 2: ', 'wrong answer 3: '];
+            for (let i = 2; i <= 4; i++) {
+                const optionLabel = document.createElement('label');
+                optionLabel.textContent = optionLabels[i - 2];
+                const optionInput = document.createElement('input');
+                optionInput.type = 'text';
+                optionInput.name = `wrong-answer${i - 1}`;
+                optionLabel.appendChild(optionInput);
+                questionDiv.appendChild(optionLabel);
+                questionDiv.appendChild(document.createElement('br'));
+            }
+
+            const removeQuestionBtn = document.createElement('button');
+            removeQuestionBtn.textContent = 'Remove Question';
+            removeQuestionBtn.classList.add('remove-question-btn');
+            removeQuestionBtn.addEventListener('click', function() {
+                questionDiv.remove();
+            });
+
+            questionDiv.appendChild(questionLabel);
+            questionDiv.appendChild(document.createElement('br'));
+            questionDiv.appendChild(option1Label);
+            questionDiv.appendChild(document.createElement('br'));
+            questionDiv.appendChild(removeQuestionBtn);
+            questionDiv.appendChild(document.createElement('hr'));
+
+            questionsContainer.appendChild(questionDiv);
+        }
+
+        // Function to submit the quiz
+        function submitQuiz(event) {
+            event.preventDefault();
+
+            const submittedQuestions = document.getElementById('submitted-questions');
+            submittedQuestions.innerHTML = ''; // Clear previous submissions
+
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question, index) => {
+                const questionText = question.querySelector('input[name="question"]').value;
+                const correctAnswer = question.querySelector('input[name="correct-answer"]').value;
+                const wrongAnswers = [];
+                question.querySelectorAll('input[name^="wrong-answer"]').forEach(optionInput => {
+                    wrongAnswers.push(optionInput.value);
+                });
+
+                const submittedQuestionDiv = document.createElement('div');
+                submittedQuestionDiv.classList.add('submitted-question');
+                submittedQuestionDiv.innerHTML = `<strong>Question ${index + 1}:</strong> ${questionText}<br><strong>Correct Answer:</strong> ${correctAnswer}<br><strong>Wrong Answers:</strong> ${wrongAnswers.join(', ')}`;
+
+                submittedQuestions.appendChild(submittedQuestionDiv);
+            });
+        }
+
+        // Event listener to add a new question field
+        document.getElementById('add-question-btn').addEventListener('click', addQuestion);
+
+        // Event listener to submit the quiz
+        document.getElementById('submit-quiz-btn').addEventListener('click', submitQuiz);
+    </script>
+</body>
+</html>
+
+
