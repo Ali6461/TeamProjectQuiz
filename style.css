@@ -174,3 +174,9 @@ body {
     text-align: center;
 }
 
+.question-box {
+    border: 1px solid #000000; /* Border style */
+    padding: 10px; /* Padding around the question */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #000000; /* Background color */
+}

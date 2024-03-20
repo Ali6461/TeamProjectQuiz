@@ -1,55 +1,52 @@
-// Function to prompt the user for a question
-function askQuestion() {
-    var userQuestion = prompt("Please enter your question:");
-    return userQuestion;
-}
-
-// Function to prompt the user for an answer
-function askAnswer(promptText) {
-    var userAnswer = prompt(promptText);
-    return userAnswer;
-}
-
-// Function to save the question and answers to a JSON file
-function saveToJSON(question, correctAnswer, incorrectAnswers) {
+async function saveToJSON(question, correctAnswer, incorrectAnswers) {
     var jsonData = {
         question: question,
         correctAnswer: correctAnswer,
         incorrectAnswers: incorrectAnswers
     };
 
-    // Convert JSON data to a string
-    var jsonString = JSON.stringify(jsonData);
+    try {
+        // Request access to the file system
+        const fileHandle = await window.showSaveFilePicker({
+            suggestedName: 'quiz_data.json',
+            types: [{
+                accept: {
+                    'application/json': ['.json'],
+                },
+            }],
+        });
 
-    // Create a Blob with the JSON string
-    var blob = new Blob([jsonString], { type: "application/json" });
+        // Create a writable stream to the file
+        const writableStream = await fileHandle.createWritable();
 
-    // Create a link element to trigger the download
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "user_data.json";
+        // Write the JSON data to the file
+        await writableStream.write(JSON.stringify(jsonData));
+        
+        alert("Question and answers saved");
+        
+        // Close the writable stream
+        await writableStream.close();
 
-    // Append the link to the document and trigger a click
-    document.body.appendChild(a);
-    a.click();
+        console.log('File saved successfully.');
 
-    // Remove the link from the document
-    document.body.removeChild(a);
+    } catch (err) {
+        console.error('Error saving file:', err);
+    }
 }
+
 
 // Function to handle the button click event
 function askQuestionsAndSave() {
-    var userQuestion = askQuestion();
-    var userCorrectAnswer = askAnswer("Please enter the correct answer:");
-    var userIncorrectAnswer1 = askAnswer("Please enter an incorrect answer:");
-    var userIncorrectAnswer2 = askAnswer("Please enter another incorrect answer:");
-    var userIncorrectAnswer3 = askAnswer("Please enter one more incorrect answer:");
+    var userQuestion = document.getElementById('questionInput').value;
+    var userCorrectAnswer = document.getElementById('correctAnswerInput').value;
+    var userIncorrectAnswer1 = document.getElementById('incorrectAnswer1Input').value;
+    var userIncorrectAnswer2 = document.getElementById('incorrectAnswer2Input').value;
+    var userIncorrectAnswer3 = document.getElementById('incorrectAnswer3Input').value;
 
     var userIncorrectAnswers = [userIncorrectAnswer1, userIncorrectAnswer2, userIncorrectAnswer3];
 
     if (userQuestion && userCorrectAnswer && userIncorrectAnswers.every(Boolean)) {
         saveToJSON(userQuestion, userCorrectAnswer, userIncorrectAnswers);
-        alert("Question and answers saved");
     } else {
         alert("Please fill in all fields.");
     }
