@@ -179,4 +179,10 @@ body {
     padding: 10px; /* Padding around the question */
     border-radius: 5px; /* Rounded corners */
     background-color: #000000; /* Background color */
+    width: 300px; /* Adjust the width as needed */
+    position: relative; /* Set positioning context */
+    top: 100px; /* Adjust this value to move the box further down */
 }
+
+
+
