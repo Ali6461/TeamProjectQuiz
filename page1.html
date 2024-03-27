@@ -5,27 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Maker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style5.css">
 </head>
 <body>
-
-<div class="main">
-    <h1>Question Input</h1>
-    <label for="questionInput">Enter your question:</label>
-    <input type="text" id="questionInput">
-    
-    <label for="correctAnswerInput">Enter the correct answer:</label>
-    <input type="text" id="correctAnswerInput">
-
-    <label for="incorrectAnswer1Input">Enter an incorrect answer:</label>
-    <input type="text" id="incorrectAnswer1Input">
-
-    <label for="incorrectAnswer2Input">Enter another incorrect answer:</label>
-    <input type="text" id="incorrectAnswer2Input">
-
-    <label for="incorrectAnswer3Input">Enter one more incorrect answer:</label>
-    <input type="text" id="incorrectAnswer3Input">
-
-    <button onclick="askQuestionsAndSave()">Save Question</button>
+<div id="quizmaker" class="main1">
+        <h1 class="chat-box-header">Question Maker</h1>
+        <div class="Question-Maker-Main">
+            <div class="questioncontainer">
+                <label for="questionInput">Enter your question:</label>
+                <input type="text" id="questionInput"class="questionsInput">
+            </div>
+            <div class="questioncontainer">
+                <label for="correctAnswerInput">Enter the correct answer:</label>
+                <input type="text" id="correctAnswerInput" class="questionsInput">
+            </div>
+            <div class="questioncontainer">
+                <label for="incorrectAnswer1Input">Enter an incorrect answer:</label>
+                <input type="text" id="incorrectAnswer1Input" class="questionsInput">
+            </div>
+                <div class="questioncontainer">
+                    <label for="incorrectAnswer2Input">Enter another incorrect answer:</label>
+                    <input type="text" id="incorrectAnswer2Input" class="questionsInput">
+                </div>
+            <div class="questioncontainer">
+                <label for="incorrectAnswer3Input">Enter another incorrect answer:</label>
+                <input type="text" id="incorrectAnswer3Input" class="questionsInput">
+            </div>
+            <button class="chat-submit" type="button" name="submit"onclick="askQuestionsAndSave()">Save</button>
+        </div>
 </div>
 
 <script src="questions.js" defer></script>
