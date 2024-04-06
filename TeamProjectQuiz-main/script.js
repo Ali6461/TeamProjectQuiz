@@ -121,8 +121,3 @@ const disableButtons = (value) => {
     element.disabled = value;
   });
 };
-
-function showQuestion(index) {
-  const questionText = document.querySelector('.question-text');
-  questionText.textContent =''
-}

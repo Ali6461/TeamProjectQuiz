@@ -174,3 +174,83 @@ body {
     text-align: center;
 }
 
+
+.question-box {
+    border: 1px solid #000000; /* Border style */
+    padding: 10px; /* Padding around the question */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #000000; /* Background color */
+    width: 300px; /* Adjust the width as needed */
+    position: relative; /* Set positioning context */
+    top: 100px; /* Adjust this value to move the box further down */
+}
+
+.quiz-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #dc3cd4;
+    max-width: 600px;
+    margin: 100px auto;
+    color: #fff;
+}
+
+.quiz-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+.question-text {
+    font-size: 20px;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+.option-list {
+    list-style: none;
+    padding: 0;
+}
+
+.option {
+    background: #dc3cd4;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #dc3cd4;
+    font-weight: 500;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.option:hover {
+    background-color: #000000;
+    box-shadow: none;
+}
+
+.navigation {
+    margin-top: 20px;
+}
+
+.next-btn {
+    background: #dc3cd4;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.next-btn:hover {
+    background-color: #000000;
+    box-shadow: none;
+}
+
+.progress-text {
+    display: block; /* Adjusted for better spacing */
+    margin-bottom: 20px;
+    font-weight: 500;
+}

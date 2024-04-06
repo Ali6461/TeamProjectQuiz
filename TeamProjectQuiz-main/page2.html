@@ -11,10 +11,19 @@
         <header class="header">
             <a href="#" class="logo">Quiz Taker</a>
         </header>
-        <div id="quizData" class="quiz-data">
-            <!-- Data will be displayed here -->
+        <div id="quizContainer" class="quiz-container">
+            <h1 class="quiz-header">Quiz Taker</h1>
+            <div id="questionText" class="question-text">What does HTML stand for?</div>
+            
+            <!-- Updated: Options will be inserted here by JavaScript -->
+            <div id="optionsContainer" class="option-list"></div>
+            
+            <div class="navigation">
+                <span id="progressText" class="progress-text">1 of 5 Questions</span>
+                <button id="nextButton" class="next-btn">Next</button>
+            </div>
         </div>
     </main>
-    <script src="displayData.js" defer></script>
+    <script src="questions.js"></script>
 </body>
 </html>
